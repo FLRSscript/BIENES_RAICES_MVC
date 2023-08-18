@@ -45,7 +45,7 @@ class Admin extends ActiveRecord
     {
         $usuario = $resultado->fetch_object();
         $autenticado = password_verify($this->password, $usuario->password);
-        if (!$autenticado) {
+        if ($autenticado) {
             self::$errores[] = 'El password es Incorrecto';
         }
         return $autenticado;
